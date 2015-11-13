@@ -1,0 +1,1 @@
+export { default } from 'ember-country-region-selector/components/region-selector/component';
