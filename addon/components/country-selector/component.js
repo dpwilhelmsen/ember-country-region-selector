@@ -157,6 +157,38 @@ export default Ember.Component.extend({
    */
   tabindex: 0,
 
+  /**
+   * Update the value property on select change
+   */
+  change() {
+    this._updateValue();
+
+    this.sendAction('action', this.get('value'), this);
+  },
+
+  /**
+   * Updates `value` property based on selected option tag
+   *
+   * @private
+   */
+  _updateValue(){
+    var option = this.$().val();
+
+    if (option) {
+      this.set('value', option);
+    } else {
+      this.set('value', null);
+    }
+  },
+
+  _updateSelected: Ember.observer('value', function(){
+    var value = this.get('value');
+    var option = this.$().val();
+    if (value === option) return;
+
+    this.$().val(value);
+  }),
+
   didInsertElement: function(){
     window.crs.init();
   }
