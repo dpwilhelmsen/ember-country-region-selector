@@ -5,6 +5,6 @@ module.exports = {
   name: 'ember-country-region-selector',
 
   included: function(app) {
-    app.import('bower_components/country-region-selector/dist/crs.min.js');
+    app.import(app.bowerDirectory + '/country-region-selector/dist/crs.js');
   }
 };
